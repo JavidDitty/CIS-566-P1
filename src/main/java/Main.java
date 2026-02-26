@@ -36,7 +36,7 @@ public class Main {
                     device = LaptopDevice.getInstance();
                     break;
                 case "smartphone":
-                    device = SmartphoneDevice.getInstance();
+                    device = SmartphoneDevice.getInstance(); // 1. Main.main() calls getInstance() for SmartphoneDevice
                     break;
                 case "smartwatch":
                     device = SmartwatchDevice.getInstance();
@@ -51,9 +51,10 @@ public class Main {
             }
             if (device != null) {
                 testBench.runTest(device);
-            } else {
+            } else { // 5. null is returned from SmartphoneDevice.getInstance(), which means more than 2 smartphone devices exist and a warning message is printed
                 System.out.printf("Device \"%s\" has already been tested 2 times! Skipping...\n", id);
             }
         }
     }
 }
+

@@ -14,17 +14,17 @@ public class SmartphoneDevice extends Device {
         String name = SmartphoneDevice.class.getSimpleName();
 
         // Initialize the device in the instances maps
-        if (!SmartphoneDevice.instances.containsKey(name)) {
+        if (!SmartphoneDevice.instances.containsKey(name)) { // 2. If the key (Smartphone) exists in Device.instances, it returns true
             SmartphoneDevice.instances.put(name, 0);
         }
 
         // Return an instance (if fewer than 2 exist)
-        int count = SmartphoneDevice.instances.get(name);
+        int count = SmartphoneDevice.instances.get(name); // 3. Device.instances return the count as 2 since 2 devices exist at this point
         if (count < 2) {
             SmartphoneDevice.instances.put(name, count+1);
             return new SmartphoneDevice();
         }
-        return null;
+        return null; // 4. null is returned to Main.main() from Device.getInstance() since 2 exist at this point
     }
 
     @Override
